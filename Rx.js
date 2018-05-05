@@ -35,3 +35,43 @@ const memoized = (fn) => {
     const lookupTable = {};
     return (arg) => lookupTable[arg] || (lookupTable[arg] = fn(arg));
 }
+
+/**
+ * 
+ * @param {*} array 需要遍历的数组
+ * @param {*} fn 遍历每个item的函数
+ */
+const map = (array, fn) => {
+    let results = [];
+    for (const value of array) {
+        results.push(fn(value))
+    }
+    return results
+}
+
+/**
+ * 
+ * @param {*} array 需要遍历的数组
+ * @param {*} fn 遍历每个item的函数
+ */
+const filter = (array, fn) => {
+    let results = []
+    for (const value of array) {
+        (fn(value)) ? results.push(value) : void 0
+    }
+    return results
+}
+
+/**
+ * 
+ * @param {*} array 需要遍历的数组
+ * @param {*} fn 遍历每个item的函数
+ */
+const concatAll = (array, fn) => {
+    let results = []
+    for (const value of array) {
+        results.push.apply(results, value)
+    }
+    return results
+}
+
