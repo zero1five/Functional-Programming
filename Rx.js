@@ -75,3 +75,25 @@ const concatAll = (array, fn) => {
     return results
 }
 
+/**
+ * @param {*} fn 实际上执行的函数
+ */
+let curry = (fn) => {
+    if (typeof fn !== 'function') throw Error('[Functional] no function provided')
+    return function curriedFn (...args) {
+        if (args.length < fn.length) return function() {
+            return curriedFn.apply(null, args.concat(
+                [].slice.call(arguments)
+            ))
+        }
+        return fn.apply(null, args)
+    }
+}
+
+/**
+ * function add(x, y) {
+ *     return x * y
+ * }
+ * 
+ * console.log(curry(add)(2)(5)) // 10
+ */
