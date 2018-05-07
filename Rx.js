@@ -97,3 +97,26 @@ let curry = (fn) => {
  * 
  * console.log(curry(add)(2)(5)) // 10
  */
+
+
+/**
+ * @param {*} array 需要拆分为块的数组
+ * @param {*} size 每次拆分的个数
+ */
+function chunk(array, size) {
+    size = Math.max(size, 0)
+    const length = array == null ? void 0 : array.length
+    if (!length || size < 1) {
+        return []
+    }
+    let index = 0
+    let resIndex = 0
+    const result = new Array(Math.ceil(length / size))
+
+    while (index < length) {
+        result[resIndex++] = slice(array, index, (index += size))
+    }
+    return result
+}
+
+
