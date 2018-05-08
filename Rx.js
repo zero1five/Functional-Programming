@@ -98,7 +98,6 @@ let curry = (fn) => {
  * console.log(curry(add)(2)(5)) // 10
  */
 
-
 /**
  * @param {*} array 需要拆分为块的数组
  * @param {*} size 每次拆分的个数
