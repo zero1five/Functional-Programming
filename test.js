@@ -32,3 +32,18 @@ function insertion(arr) {
 }
 
 console.log(insertion(arr))
+
+function Bubble(arr) {
+    for ( let i = 0; i < arr.length; i++ ) {
+        for ( let j = 0; j < arr.length; j++ ) {
+            if( arr[j] > arr[j + 1]) {
+                key = arr[j + 1]
+                arr[j] = key
+                arr[j + 1] = arr[j]
+            }
+        }
+    }
+    return arr
+}
+
+console.log(Bubble(arr))
