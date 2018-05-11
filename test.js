@@ -46,4 +46,22 @@ function Bubble(arr) {
     return arr
 }
 
+let arr2 = [2,1,423432,4,4342342,1231,3232,123123,1231,9,0,999]
+
+function Bubble_reverse(arr) {
+    for ( let i = 0; i < arr.length; i++ ) {
+        for ( let j = 0; j < arr.length; j++ ) {
+            if ( arr[j] < arr[j + 1]) {
+                let key = arr[j + 1];
+                arr[j + 1] = arr[j]
+                arr[j] = key
+            }
+        }
+    }
+    return arr
+}
+
+
 console.log(Bubble(arr))
+
+console.log(Bubble_reverse(arr2))
