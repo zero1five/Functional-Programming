@@ -35,11 +35,13 @@ function swap(arr, i, j) {
 function heapSort(arr) {
     buildHeap(arr);
     
-    for (let i = arr.length - 1; i > 0; i--) {
-        swap(arr, 0, i);
-        len--
-        heapify(arr, 0);
-    }
+    console.log(arr); /* 堆建立完成 */
+    
+    // for (let i = arr.length - 1; i > 0; i--) {
+    //     swap(arr, 0, i);
+    //     len--
+    //     heapify(arr, 0);
+    // }
     return arr;
 }
 
