@@ -80,3 +80,21 @@ a[attr] = 'string'
 a[c] = 456; // 也就是JS内部会想尽办法将[attr]中的attr转为字符串, 这里JS内部调用了tostring.
 
 console.log(a[attr])
+
+var data = [
+    {
+        "img": "",
+        "img": [
+            {
+                "num": 1
+            },
+            {
+                "num": 2
+            }
+        ]
+    }
+]
+
+data.forEach(v=>v.imgs=v.img.reduce((a,b)=>a.num+b.num))
+
+console.log(data)
