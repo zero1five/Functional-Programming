@@ -65,13 +65,11 @@ console.log(Bucket_sort(arr))
 console.timeEnd('h')
 
 function BucketSort(arr) {
-    let buckets = [];
-    let anotherBuckets = [];
+    let buckets = [],
+        anotherBuckets = [];
 
     for (let i = 0; i < arr.length; i++) {
-        if(arr[i] < 0) {
-            anotherBuckets.push(arr[i])
-        }
+        arr[i] < 0 ? anotherBuckets.push(arr[i]) : void 0
         buckets[Math.floor(arr[i])] = []
     }
 
