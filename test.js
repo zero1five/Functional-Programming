@@ -65,3 +65,18 @@ function Bubble_reverse(arr) {
 console.log(Bubble(arr))
 
 console.log(Bubble_reverse(arr2))
+
+let a = {};
+    b = {},
+    c = {};
+
+a[b] = 123;
+a[c] = 456;
+
+console.log(a[b]) // 以方括号来设置属性, key必须是计算结果为string的表达式.
+
+let attr = {};
+a[attr] = 'string'
+a[c] = 456; // 也就是JS内部会想尽办法将[attr]中的attr转为字符串, 这里JS内部调用了tostring.
+
+console.log(a[attr])
