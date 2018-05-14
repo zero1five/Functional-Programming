@@ -3,6 +3,7 @@
  * 
  * @description 单例模式
  * 单例模式的核心是确保只有一个实例, 并开放给全局, 供全局访问.
+ * 不只是创建对象,绑定事件, 函数运行都可以使用单例模式.
  */
 var CreateDiv = function(name) {
     this.name = name;
