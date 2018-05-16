@@ -64,7 +64,7 @@ var header = (function(){
             console.log('coding header module...')
         }
     }
-})
+})();
 
 var nav = (function() {
     login.listen('loginSucc', function(data) {
@@ -75,4 +75,4 @@ var nav = (function() {
             console.log('setting nav module...')
         }
     }
-})
+})();
