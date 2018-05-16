@@ -5,3 +5,24 @@ function throttle(method, context) {
     },1000)
 }
 
+var each = function( ary, callback ) {
+    for ( var i = 0, l = ary.length; i < l; i++ ) {
+        callback.call(ary[i], i, ary[i])
+    }
+}
+
+/* each([1,2,3,4], function( i, n ) {
+    console.log([i,n])
+}) */
+
+let arr = [1,2,34,5,6,1231];
+
+Array.prototype.cycle = function(callback) {
+    for ( var i = 0, l = this.length; i < l; i++ ) {
+        callback.call(this, i, this[i])
+    }
+}
+
+arr.cycle((i, n) => {
+    console.log([i, n])
+})
