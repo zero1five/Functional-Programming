@@ -26,3 +26,13 @@ Array.prototype.cycle = function(callback) {
 arr.cycle((i, n) => {
     console.log([i, n])
 })
+
+var reverseEach = function( ary, callback) {
+    for ( var l = ary.length - 1; l >= 0; l-- ) {
+        callback(l, ary[l])
+    }
+}
+
+reverseEach([1,23,4,56], function(i, n) {
+    console.log(n)
+})
