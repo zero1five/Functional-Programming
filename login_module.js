@@ -45,13 +45,11 @@ var installEvent = function(obj) {
 let login = {};
 installEvent(login);
 
-/* $.ajax('www.bilibili.com', function(data) {
-    login.trigger('loginSucc', data)
-}) */
 
 setTimeout(() => {
     let data = {
-        createTime: '2018-5-17'
+        createTime: '2018-5-17',
+        avatar: 'www.1.gif'
     }
     login.trigger('loginSucc', data)
 }, 1000);
