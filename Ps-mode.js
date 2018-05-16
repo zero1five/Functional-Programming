@@ -1,35 +1,66 @@
+/**
+ ********************- 发布订阅模式 -***************************
+ */
+
+var event = {
+    clientList: [],
+    listen: function(key, fn) {
+        if ( !this.clientList[ key ] ) {
+            this.clientList[ key ] = []
+        }
+        this.clientList[ key ].push(fn)
+    },
+    trigger: function() {
+        var key = Array.prototype.shift.call(arguments),
+            fns = this.clientList[ key ];
+
+        if ( !fns || fns.length === 0 ) {
+            return false
+        }
+        
+        for ( var i = 0, fn; fn = fns[i++]; ) {
+            fn.apply(this, arguments)
+        }
+    },
+    remove: function(key, fn) {
+        var fns = this.clientList[ key ];
+        if (!fns) {
+           return false 
+        }
+        if (!fn) {
+            fns && (fns.length = 0)
+        } else {
+            for ( var l = fns.length - 1; l >= 0; l-- ) {
+                var _fn = fns[l]
+                if(_fn === fn) {
+                    fns.splice(l, 1)
+                }
+            }
+        }
+    }
+}
+
+var installEvent = function(obj) {
+    for ( var i in event ) {
+        obj[i] = event[i]
+    }
+}
+
 var salesOffices = {};
-salesOffices.clientList = {};
+installEvent(salesOffices);
 
-salesOffices.listen = function(key, fn) {
-    if (!this.clientList[key]) {
-        this.clientList[key] = []
-    }
-    this.clientList[key].push(fn)
-}
 
-salesOffices.trigger = function() {
-    var key = Array.prototype.shift.call(arguments),
-        fns = this.clientList[key]
-
-    if (!fns || fns.length === 0) {
-        return false
-    }
-    for ( var i = 0, fn; fn = fns[i++];) {
-        fn.apply(this, arguments);
-    }
-}
-
-/* 第一个订阅者 */
-salesOffices.listen('squareMetor88', function( price,squareMeter) {
-    console.log(price)
-
+salesOffices.listen('change', show1 = function(price) {
+    console.log('change: ' + price)
 })
 
-/* 第二个订阅者 */
-salesOffices.listen('squareMetor120', function( price, squareMeter) {
-    console.log(price)
-
+salesOffices.listen('square', show2 = function(price) {
+    console.log('square: ' + price)
 })
 
-salesOffices.trigger('squareMetor120', 20000)
+salesOffices.trigger('change', 2000)
+
+salesOffices.remove('square', show2)
+
+salesOffices.trigger('square', 3000)
+
