@@ -53,17 +53,26 @@ var salesOffices = {};
 installEvent(salesOffices);
 
 
-salesOffices.listen('change', show1 = function(price) {
+salesOffices.listen('square', function(price) {
     console.log('change: ' + price)
 })
 
-salesOffices.listen('square', show2 = function(price) {
+salesOffices.listen('square', function(price) {
     console.log('square: ' + price)
 })
 
-salesOffices.trigger('change', 2000)
-
-salesOffices.remove('square', show2)
-
 salesOffices.trigger('square', 3000)
 
+let Event = require('./PubiSub.A-.js')
+
+
+var header = (function(){
+    Event.listen('loginSucc', data => {
+        console.log(data)
+    })
+})();
+
+var login = (function(){
+    var count = 0;
+    Event.trigger('loginSucc', count)
+})();

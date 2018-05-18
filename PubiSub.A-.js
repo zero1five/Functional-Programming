@@ -62,12 +62,9 @@ var Event = (function() {
 
 })();
 
+module.exports = Event;
 
-Event.listen('leaves', age => {
-    console.log(age)
-})
 
-Event.trigger('leaves', 19)
 
 
 
